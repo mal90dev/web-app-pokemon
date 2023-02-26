@@ -4,5 +4,7 @@
     {
         Pokemon GetPokemonById(int id);
         IEnumerable<Pokemon> GetPokemons();
+        IEnumerable<Pokemon> GetPokemonsFilter(PokemonFilter filter);
+
     }
 }

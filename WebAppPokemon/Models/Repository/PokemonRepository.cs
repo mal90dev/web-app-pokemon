@@ -12,9 +12,18 @@ namespace WebAppPokemon.Models.Repository
             return _context.Pokemons.ToList();
         }
 
+        public IEnumerable<Pokemon> GetPokemonsFilter(PokemonFilter filter)
+        {
+            return _context.Pokemons
+                .Where(x => x.Name.Contains(filter.Name))
+                .Where(x => x.legendary == filter.legendary)
+                .ToList();
+        }
+
         public Pokemon GetPokemonById(int id)
         {
             return _context.Pokemons.Find(id);
         }
     }
 }
+

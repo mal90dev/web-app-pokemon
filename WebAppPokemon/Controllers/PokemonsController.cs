@@ -40,5 +40,17 @@ namespace WebAppPokemon.Controllers
             }
             return pokemonByID;
         }
+
+        [HttpPost]
+        [ActionName("/filter")]
+        public IEnumerable<Pokemon> GetPokemonsFilter(PokemonFilter filter)
+        {
+            var pokemonFilter = _pokemonRepository.GetPokemonsFilter(filter);
+            if (pokemonFilter == null)
+            {
+                return (IEnumerable<Pokemon>)NotFound();
+            }
+            return pokemonFilter;
+        }
     }
 }
